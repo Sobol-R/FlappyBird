@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.flappybird.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/bg"
+            android:background="@drawable/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/bird"
+            android:layout_centerInParent="true"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/ic_android_black_24dp"/>
+        <ImageView
+
+            android:id="@+id/obstacle"
+            android:background="@drawable/ic_launcher_background"
+            android:layout_centerInParent="true"
+            android:translationX
+                ="500dp"
+            android:layout_width="128dp"
+            android:layout_height="128dp" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
