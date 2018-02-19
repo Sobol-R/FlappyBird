@@ -10,19 +10,45 @@
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
+        <View
             android:id="@+id/bg"
-            android:background="@drawable/bg"
+            android:background="@color/bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <ImageView
-            android:id="@+id/bird"
+            android:id="@+id/banana"
             android:layout_centerInParent="true"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:background="@drawable/ic_android_black_24dp"/>
-        <ImageView
 
+        <RelativeLayout
+            android:id="@+id/menu"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_width="230dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@color/start_end_Window"
+            android:text="start"
+            android:textSize="27dp">
+
+            <TextView
+                android:id="@+id/start"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="#A73C4E"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="sart"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
+        </RelativeLayout>
+        <ImageView
             android:id="@+id/obstacle"
             android:background="@drawable/ic_launcher_background"
             android:layout_centerInParent="true"

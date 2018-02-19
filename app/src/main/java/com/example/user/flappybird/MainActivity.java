@@ -1,5 +1,6 @@
 package com.example.user.flappybird;
 
+import android.annotation.SuppressLint;
 import android.media.Image;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -7,35 +8,52 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView bird;
-    ImageView obstacle;
+    ImageView banana;
+    ImageView monkey;
     RelativeLayout root;
+    RelativeLayout menu;
+    TextView start;
 
-    float birdV = 0;
-    int birdY = 0;
-    int obstY = 0;
-    int obstX = 500;
+    float bananaV;
+    int bananaY;
+    int monkeyX;
+    int monkeyY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bird = findViewById(R.id.bird);
-        obstacle = findViewById(R.id.obstacle);
+        menu = findViewById(R.id.menu);
+        start = findViewById(R.id.start);
+        banana = findViewById(R.id.banana);
+        monkey = findViewById(R.id.obstacle);
         root = findViewById(R.id.root);
-
-        initializeTimer();
-
+        startNewGame();
         root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                birdV = -100f;
+                bananaV = -30f;
+            }
+        });
+    }
+    private void startNewGame() {
+        menu.setVisibility(View.VISIBLE);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                menu.setVisibility(View.GONE);
+                bananaV = 0;
+                bananaY = 0;
+                monkeyX = 500;
+                monkeyY = 0;
+                initializeTimer();
             }
         });
     }
@@ -56,18 +74,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onTimer() {
-        obstX -= 3;
-        if (obstacle.getTranslationX() < -500) {
-            obstX = 500;
-            obstY = (int) (Math.random() * 400 - 200);
+        monkeyX -= 3;
+        if (monkey.getTranslationX() < -500) {
+            monkeyX = 500;
+            monkeyY = (int) (Math.random() * 400 - 200);
         }
-        birdV += 0.7;
-        birdY += birdV;
+        bananaV += 2;
+        bananaY += bananaV;
     }
 
     private void onTimerUi() {
-        bird.setTranslationY(birdY);
-        obstacle.setTranslationX(obstX);
-        obstacle.setTranslationY(obstY);
+        banana.setTranslationY(bananaY);
+        monkey.setTranslationX(monkeyX);
+        monkey.setTranslationY(monkeyY);
+        if (bananaY > 1280 || bananaY < -1280) {
+            startNewGame();
+        }
     }
 }
