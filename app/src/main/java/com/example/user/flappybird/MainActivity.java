@@ -39,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            score = savedInstanceState.getInt("score");
+        }
         setContentView(R.layout.activity_main);
-
         menu = findViewById(R.id.menu);
         start = findViewById(R.id.start);
         banana = findViewById(R.id.banana);
@@ -187,5 +189,17 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         // получаем сохранённое число и возвращаем его
         return preferences.getInt(record, 0); // 0 - значение по умолчанию
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("score", score);
+        outState.putInt("record", getRecord());
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        score = savedInstanceState.getInt("score");
+        //rec = savedInstanceState.getInt("record");
     }
 }
