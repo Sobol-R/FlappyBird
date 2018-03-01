@@ -1,9 +1,7 @@
 package com.example.user.flappybird;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
-import android.media.Image;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,11 +11,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     ImageView banana;
+    ImageView bg;
     View monkey;
     View monkey2;
     RelativeLayout root;
@@ -39,10 +41,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            score = savedInstanceState.getInt("score");
-        }
         setContentView(R.layout.activity_main);
+
+        bg = findViewById(R.id.bg);
         menu = findViewById(R.id.menu);
         start = findViewById(R.id.start);
         banana = findViewById(R.id.banana);
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         root = findViewById(R.id.root);
         viewScore = findViewById(R.id.score);
         viewRecord = findViewById(R.id.record);
+
         initializeTimer();
         startNewGame();
         root.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +61,24 @@ public class MainActivity extends AppCompatActivity {
                 bananaV = -30f;
             }
         });
+
+        if (savedInstanceState != null) {
+            viewScore.setText("score:" + score);
+        }
+
+        String url = "https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/fc/3062252-poster-p-1-how-skyscrapers-work-for-kids.jpg";
+
+        RequestOptions options = new RequestOptions();
+        options.centerCrop();
+
+        Glide.with(this)
+                .load(url)
+                .apply(options)
+                .into(bg);
     }
+
+
+
     private void startNewGame() {
         menu.setVisibility(View.VISIBLE);
         start.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         banana.setTranslationY(bananaY);
         monkey.setTranslationX(monkeyX);
         monkey.setTranslationY(monkeyY);
-        if (bananaY > 1280 || bananaY < -1280 || areIntersect(banana, monkey) == true) {
+        if (bananaY > 1280 || bananaY < -1280 || areIntersect(banana, monkey)) {
             monkey.setVisibility(View.GONE);
             check = false;
             n = 3;
