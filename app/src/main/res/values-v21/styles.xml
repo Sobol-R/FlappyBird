@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- уже было -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- включаем анимации переходов -->
+        <item name="android:windowContentTransitions">true</item>
+        <!-- включаем анимацию появления новой активности -->
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <!-- включаем анимацию скрытия новой активности -->
+        <item name="android:windowExitTransition">@android:transition/fade</item>
+    </style>
+</resources>

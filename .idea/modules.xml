@@ -4,10 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FlappyBird.iml" filepath="$PROJECT_DIR$/FlappyBird.iml" />
       <module fileurl="file://D:\android\FlappyBird\FlappyBird.iml" filepath="D:\android\FlappyBird\FlappyBird.iml" />
-      <module fileurl="file://C:\Rost_projects\FlappyBird\FlappyBird.iml" filepath="C:\Rost_projects\FlappyBird\FlappyBird.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://D:\android\FlappyBird\app\app.iml" filepath="D:\android\FlappyBird\app\app.iml" />
-      <module fileurl="file://C:\Rost_projects\FlappyBird\app\app.iml" filepath="C:\Rost_projects\FlappyBird\app\app.iml" />
     </modules>
   </component>
 </project>

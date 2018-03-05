@@ -2,11 +2,14 @@ package com.example.user.flappybird;
 
 import android.content.SharedPreferences;
 import android.graphics.Rect;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -61,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 bananaV = -30f;
             }
         });
-
+        AnimationDrawable bd = (AnimationDrawable) banana.getBackground();
+        bd.start();
         if (savedInstanceState != null) {
             viewScore.setText("score:" + score);
         }
@@ -144,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         monkey.setTranslationX(monkeyX);
         monkey.setTranslationY(monkeyY);
         if (bananaY > 1280 || bananaY < -1280 || areIntersect(banana, monkey)) {
+            menu.setVisibility(View.VISIBLE);
             monkey.setVisibility(View.GONE);
             check = false;
             n = 3;
